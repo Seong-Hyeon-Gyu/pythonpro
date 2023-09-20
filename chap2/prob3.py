@@ -1,6 +1,6 @@
 name = input("Hi. What's our name? ")
 age = int(input("And how old are you? "))
-weigh = float(input("Okay, last question. how many kg do you weigh?"))
+weigh = float(input("Okay, last question. how many kg do you weigh? "))
 print("\nDid you know that you're just", age/7 ,"in dog years?\n")
 print("But you're also over", age*31536000,"seconds old.\n")
 print("If a small child were trying to get your attention, your name would became:", name*5)
