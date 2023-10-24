@@ -20,11 +20,21 @@ def display_instruct():
     print("\nPrepare your self, human. The ultimate batter is about to begin.\n\n\n")
     ask_yes_no()
 def new_board():
-    grid[] = 
+    grid = [" " for x in range(9)]
 def display_board(board):
-
+    for r in range(3):
+        if (r==0):
+            rownum = r
+        elif (r==1):
+            rownum = r+2
+        else:
+            rownum = r+4
+        print("\t\t", grid[rownum], "| ", grid[rownum+1], "| ", grid[rownum+2])
+        if (r!=2):
+            print("\t\t---|---|---")
 def winner(board):
     human = X
+    computer = O
     if grid[0] == grid[1] == grid[2] or \
        grid[3] == grid[4] == grid[5] or \
        grid[6] == grid[7] == grid[8] or \
@@ -37,22 +47,28 @@ def winner(board):
     else:
         return False
 def human_move(board, human):
-    
-def computer_move(board, human, computer):
+    num = int(input("Where will you move? <0 - 8>:"))
+    legal_move()
 
+def computer_move(board, human, computer):
+    randnum = random.random(0, 9)
+    if grid[randnum]!=" " and grid[randnum]==X:
+        randnum = random.random(0, 9)
+        computer_move()
+    else:
+        grid[randnum]=computer
 def next_turn(turn):
-    if turn == X:
+    if (turn == X):
         turn = O
     return turn
 def congrat_winner(winner, human, computer):
-    print("As I predicted, human, I am triumphant once more.\nProof that computers are superior to humans in all regards.")
-    print("No, no! It cannot be! Somehow you tricked me, human.\nBut never again! I, the computer, so swears it!")
+
 def ask_yes_no(question):
     question = input("Do you require the first move? <y/n>: ")
     global turn
-    if question == 'y':
+    if (question == 'y'):
         turn = X
-    elif question == 'n':
+    elif (question == 'n'):
         turn = O
     else:
         question = input("Plese input again: ")
@@ -60,5 +76,11 @@ def ask_number(question, low, high):
     question = int(input("Where will you move? <0 - 8>:"))
     print("Fine..")
 def legal_move(board):
-
-
+    if grid[num]!=" ":
+        print("Try input again.")
+        if turn == X:
+            human_move()
+        else:
+            computer_move()
+    else:
+        grid[num]=human
