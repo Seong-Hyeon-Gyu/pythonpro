@@ -53,7 +53,6 @@ def human_move(board, human):
 def computer_move(board, human, computer):
     randnum = random.random(0, 9)
     if grid[randnum]!=" " and grid[randnum]==X:
-        randnum = random.random(0, 9)
         computer_move()
     else:
         grid[randnum]=computer
@@ -62,16 +61,23 @@ def next_turn(turn):
         turn = O
     return turn
 def congrat_winner(winner, human, computer):
-
-def ask_yes_no(question):
-    question = input("Do you require the first move? <y/n>: ")
-    global turn
-    if (question == 'y'):
-        turn = X
-    elif (question == 'n'):
-        turn = O
+    if count == 10:
+        print("draw")
     else:
-        question = input("Plese input again: ")
+        if turn == X:
+            print("No, no! It cannot be! Somehow you tricked me, human.\nBut never again! I, the computer, so swear it!")
+        else:
+            print("As I predicted, human, I am triumphant once more.\nProof that computers are superior to humans in all regards.")
+def ask_yes_no(question):
+    global turn
+    while true:
+        question = input("Do you require the first move? <y/n>:")
+        if (question == 'y'):
+            turn = X
+            break
+        elif (quesion == 'x'):
+            trun = O
+            break
 def ask_number(question, low, high):
     question = int(input("Where will you move? <0 - 8>:"))
     print("Fine..")
@@ -82,5 +88,3 @@ def legal_move(board):
             human_move()
         else:
             computer_move()
-    else:
-        grid[num]=human
