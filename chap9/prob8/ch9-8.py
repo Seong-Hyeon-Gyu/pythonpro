@@ -17,6 +17,18 @@ class Critter:
     def getMood(self):
         return self.mood_level
 
+class food:
+    def __init__(self, name):
+        self.name=name
+    def getLevel(self):
+        if self.name=="animal feed":
+            return 2
+        elif self.name=="fruit":
+            return 3
+        elif self.name=="steak":
+            return 4
+def setCritterLevel(critter):
+    critter.setMood(food.getLevel())
 # main
 name=input("What do you wnat to name your critter?: ")
 crit = Critter(name, 5)
@@ -40,8 +52,23 @@ while 1:
         print(mood)
         crit.setMood(-1)
     elif (choice==2):
-        crit.feed()
-        crit.setModd(2)
+        print("\nChoose your critter's food\n\n\t0 - animal feed\n\t1 - fruit\n\t2 - steak\n")
+        choice=int(input("Choice: "))
+        while 1:
+            if(choice==0):
+                food=food("animal feed")
+                setCritterLevel(crit)
+                break
+            elif(choice==1):
+                food=food("fruit")
+                setCritterLevel(crit)
+                break
+            elif(choice==2):
+                food=food("steak")
+                setCritterLevel(crit)
+                break
+            else:
+                choice=int(input("Choice again: "))
     elif (choice==3):
         crit.play()
         crit.setMood(3)
