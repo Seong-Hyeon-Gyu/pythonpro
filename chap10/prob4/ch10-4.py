@@ -60,21 +60,32 @@ class Positionable_Card(Card):
 	
 	def flip(self):
 		self.is_face_up = not self.is_face_up
-class Player(Card):
+class Player(Hand):
 	def __init__(self, name):
+		super().__init__()
 		self.name = name
-class Dealer(Card):
+	def __str__(self):
+		return f"{self.name}: {super().__str__()}"
+class Dealer(Hand):
+    def __init(self):
+        super().__init__()
+    def __str__(self):
+        return f"dealer: {super().__str__()}"
 if __name__ == "__main__":
-	print "\t\t\tWelcome to Blackjack!"
-	pn = int(input("How many players? (2-5): "))
-	players = [player1, player2, player3, player4, player5]
-	del players[pn:5]
-	for count in range(pn):
-		name = input("Enter player name: ")
-		for user in range(players):
-			players[user] = name
-	deck = Deck()
-	deck.populate()
-	deck.shuffle()
-	
+    deck = Deck()
+    deck.populate()
+    deck.shuffle()
+    print("\t\tWelcome to Blackjack!")
+    user = []
+    num = int(input("\nHow many players? (2-5): "))
+    for i in range(num):
+        player_name = input(f"Enter players{i + 1} name: ")
+        player = Player(player_name)
+        user.append(player)
+    dealer = Dealer()
+    deck.deal(user, per_hand = 2)
+    deck.deal([dealer], per_hand =2)
 
+    for i in user:
+        print(i)
+    print(dealer)
